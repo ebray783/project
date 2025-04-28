@@ -1,0 +1,57 @@
+/* contact.css */
+#contact {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 60px 20px;
+  color: #00ffe7;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 2.5rem;
+  color: #ff007f;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.contact-item {
+  background: #111;
+  border: 1px solid #00ffe7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffe7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px #ff007f;
+}
+
+.contact-item h3 {
+  font-size: 1.5rem;
+  color: #ff007f;
+  margin-bottom: 10px;
+}
+
+.contact-item p, .contact-item a {
+  font-size: 1rem;
+  color: #00ffe7;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: #ff007f;
+  text-decoration: underline;
+}

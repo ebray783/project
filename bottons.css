@@ -1,0 +1,51 @@
+.cyberpunk-btn {
+  font-family: 'Orbitron', 'Montserrat', monospace, sans-serif;
+  font-size: 1.2rem;
+  color: #00fff7;
+  background: linear-gradient(90deg, #ff00cc 0%, #333399 100%);
+  border: 2px solid #00fff7;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00fff7, 0 0 24px #ff00cc;
+  padding: 14px 36px;
+  margin: 12px 0;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  text-shadow: 0 0 8px #00fff7, 0 0 2px #ff00cc;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.cyberpunk-btn:hover, .cyberpunk-btn:focus {
+  background: linear-gradient(90deg, #333399 0%, #ff00cc 100%);
+  color: #fff;
+  border-color: #ff00cc;
+  box-shadow: 0 0 24px #ff00cc, 0 0 48px #00fff7;
+  outline: none;
+}
+.cyberpunk-status {
+  display: inline-block;
+  font-family: 'Orbitron', 'Montserrat', monospace, sans-serif;
+  font-size: 1.1em;
+  color: #00fff7;
+  background: linear-gradient(90deg, #1a0033 0%, #003366 100%);
+  border: 2px solid #00fff7;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #00fff7, 0 0 2px #ff00cc;
+  padding: 8px 24px;
+  margin: 12px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #00fff7, 0 0 2px #ff00cc;
+  transition: background 0.3s, color 0.3s;
+}
+.cyberpunk-status.connected {
+  color: #00ff99;
+  border-color: #00ff99;
+  box-shadow: 0 0 16px #00ff99, 0 0 8px #00fff7;
+  background: linear-gradient(90deg, #00331a 0%, #003366 100%);
+}
+.cyberpunk-status.disconnected {
+  color: #ff0066;
+  border-color: #ff0066;
+  box-shadow: 0 0 16px #ff0066, 0 0 8px #ff00cc;
+  background: linear-gradient(90deg, #33001a 0%, #330033 100%);
+}

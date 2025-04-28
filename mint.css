@@ -1,0 +1,238 @@
+/* Auto-changing image glow effect */
+.mint-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #00f0ff;
+  filter: brightness(0.6);
+  transition: filter 0.3s ease, transform 0.3s ease, opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.mint-item img.fade-out {
+  opacity: 0; /* Smooth fade-out effect */
+}
+
+.mint-item img:hover {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+/* Glowing buttons */
+.mint-item button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 2px solid #00f0ff;
+  color: #00f0ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff; /* Cyberpunk glow */
+}
+
+.mint-item button:hover {
+  background-color: #00f0ff;
+  color: #000;
+  box-shadow: 0 0 15px #00f0ff, 0 0 25px #00f0ff, 0 0 35px #00f0ff;
+}
+  
+  .mint-item button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 2px solid #00f0ff;
+    color: #00f0ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mint-item button:hover {
+    background-color: #00f0ff;
+    color: #000;
+  }
+  /* === MINT SECTION SPACING & LAYOUT === */
+  #mint {
+    padding-top: 100px;
+    padding-bottom: 100px; /* extra space at the bottom */
+    margin-top: 200px;
+  }
+  
+  
+  /* === TWO COLUMN HORIZONTAL SCROLL LAYOUT === */
+  .mint-section-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center; /* <-- center horizontally */
+    width: 100vw;           /* Make section as wide as viewport */
+    max-width: 100vw;       /* Prevent overflow */
+    margin: 0 auto 60px;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .mint-scroll-col {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px 0;
+    width: 96vw;            /* Make columns nearly as wide as viewport */
+    max-width: 1600px;      /* Allow for large screens */
+    min-height: 180px;
+    box-sizing: border-box;
+    margin-left: auto;   /* <-- center the scroll columns */
+    margin-right: auto;
+  }
+  
+  .mint-scroll-col::-webkit-scrollbar {
+    height: 12px;
+  }
+  .mint-scroll-col::-webkit-scrollbar-track {
+    background: #1a1a2e;
+    border-radius: 6px;
+  }
+  .mint-scroll-col::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00f0ff, #6a00ff);
+    border-radius: 6px;
+  }
+  .mint-scroll-col::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #6a00ff, #00f0ff);
+  }
+  
+  /* === SIZE & POSITION UTILITIES === */
+  .mint-size-xs { width: 80px; height: 80px; }
+  .mint-size-sm { width: 120px; height: 120px; }
+  .mint-size-md { width: 150px; height: 150px; }
+  .mint-size-lg { width: 180px; height: 180px; }
+  .mint-size-xl { width: 220px; height: 220px; }
+  
+  .mint-move-left  { transform: translateX(-20px); }
+  .mint-move-right { transform: translateX(20px); }
+  .mint-move-up    { transform: translateY(-20px); }
+  .mint-move-down  { transform: translateY(20px); }
+  
+  /* To move the whole mint section horizontally, use a utility class or inline style: */
+  .mint-section-move-left  { margin-left: -60px !important; }
+  .mint-section-move-right { margin-left: 60px !important; }
+  
+  /* Or for more precise control, use transform: */
+  .mint-section-transform-left  { transform: translateX(-60px) !important; }
+  .mint-section-transform-right { transform: translateX(60px) !important; }
+  
+  /* Example usage in HTML:
+     <div class="mint-section-columns mint-section-move-left">...</div>
+     or
+     <div class="mint-section-columns mint-section-transform-right">...</div>
+  */
+  
+  /* === MOBILE STYLES === */
+  @media (max-width: 900px) {
+    .mint-section-columns {
+      flex-direction: column;
+      gap: 18px;
+      align-items: stretch;
+      width: 100vw !important;
+      max-width: 100vw !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  
+    .mint-scroll-col {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      min-height: 120px;
+      gap: 12px;
+      padding: 10px 0;
+    }
+  
+     .mint-item img {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .mint-item button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+    .mint-size-xs-mobile { width: 60px; height: 60px; }
+    .mint-size-sm-mobile { width: 90px; height: 90px; }
+    .mint-size-md-mobile { width: 120px; height: 120px; }
+    .mint-size-lg-mobile { width: 150px; height: 150px; }
+    .mint-size-xl-mobile { width: 180px; height: 180px; }
+  
+    .mint-move-left-mobile  { transform: translateX(-10px); }
+    .mint-move-right-mobile { transform: translateX(10px); }
+    .mint-move-up-mobile    { transform: translateY(-10px); }
+    .mint-move-down-mobile  { transform: translateY(10px); }
+  
+  /* Fix: Make .mint-size-* and .mint-size-*-mobile work on both .mint-item and .mint-item img */
+  .mint-size-xs,
+  .mint-item.mint-size-xs img,
+  .mint-item img.mint-size-xs { width: 80px !important; height: 80px !important; }
+  .mint-size-sm,
+  .mint-item.mint-size-sm img,
+  .mint-item img.mint-size-sm { width: 120px !important; height: 120px !important; }
+  .mint-size-md,
+  .mint-item.mint-size-md img,
+  .mint-item img.mint-size-md { width: 150px !important; height: 150px !important; }
+  .mint-size-lg,
+  .mint-item.mint-size-lg img,
+  .mint-item img.mint-size-lg { width: 180px !important; height: 180px !important; }
+  .mint-size-xl,
+  .mint-item.mint-size-xl img,
+  .mint-item img.mint-size-xl { width: 220px !important; height: 220px !important; }
+  
+  @media (max-width: 900px) {
+    .mint-size-xs-mobile,
+    .mint-item.mint-size-xs-mobile img,
+    .mint-item img.mint-size-xs-mobile { width: 60px !important; height: 60px !important; }
+    .mint-size-sm-mobile,
+    .mint-item.mint-size-sm-mobile img,
+    .mint-item img.mint-size-sm-mobile { width: 90px !important; height: 90px !important; }
+    .mint-size-md-mobile,
+    .mint-item.mint-size-md-mobile img,
+    .mint-item img.mint-size-md-mobile { width: 120px !important; height: 120px !important; }
+    .mint-size-lg-mobile,
+    .mint-item.mint-size-lg-mobile img,
+    .mint-item img.mint-size-lg-mobile { width: 150px !important; height: 150px !important; }
+    .mint-size-xl-mobile,
+    .mint-item.mint-size-xl-mobile img,
+    .mint-item img.mint-size-xl-mobile { width: 180px !important; height: 180px !important; }
+  }
+
+/* --- ENSURE SIZE & MOVEMENT CLASSES ALWAYS WIN --- */
+/* These must come after all other .mint-item img rules! */
+.mint-item.mint-size-xs, .mint-item img.mint-size-xs { width: 80px !important; height: 80px !important; }
+.mint-item.mint-size-sm, .mint-item img.mint-size-sm { width: 120px !important; height: 120px !important; }
+.mint-item.mint-size-md, .mint-item img.mint-size-md { width: 150px !important; height: 150px !important; }
+.mint-item.mint-size-lg, .mint-item img.mint-size-lg { width: 180px !important; height: 180px !important; }
+.mint-item.mint-size-xl, .mint-item img.mint-size-xl { width: 220px !important; height: 220px !important; }
+
+.mint-item.mint-move-left, .mint-item img.mint-move-left { transform: translateX(-20px) !important; }
+.mint-item.mint-move-right, .mint-item img.mint-move-right { transform: translateX(20px) !important; }
+.mint-item.mint-move-up, .mint-item img.mint-move-up { transform: translateY(-20px) !important; }
+.mint-item.mint-move-down, .mint-item img.mint-move-down { transform: translateY(20px) !important; }
+
+@media (max-width: 900px) {
+  .mint-item.mint-size-xs-mobile, .mint-item img.mint-size-xs-mobile { width: 60px !important; height: 60px !important; }
+  .mint-item.mint-size-sm-mobile, .mint-item img.mint-size-sm-mobile { width: 90px !important; height: 90px !important; }
+  .mint-item.mint-size-md-mobile, .mint-item img.mint-size-md-mobile { width: 120px !important; height: 120px !important; }
+  .mint-item.mint-size-lg-mobile, .mint-item img.mint-size-lg-mobile { width: 150px !important; height: 150px !important; }
+  .mint-item.mint-size-xl-mobile, .mint-item img.mint-size-xl-mobile { width: 180px !important; height: 180px !important; }
+
+  .mint-item.mint-move-left-mobile, .mint-item img.mint-move-left-mobile { transform: translateX(-10px) !important; }
+  .mint-item.mint-move-right-mobile, .mint-item img.mint-move-right-mobile { transform: translateX(10px) !important; }
+  .mint-item.mint-move-up-mobile, .mint-item img.mint-move-up-mobile { transform: translateY(-10px) !important; }
+  .mint-item.mint-move-down-mobile, .mint-item img.mint-move-down-mobile { transform: translateY(10px) !important; }
+}

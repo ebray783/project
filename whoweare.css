@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+#who-we-are {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px 0;
+}
+
+#who-we-are .container {
+  background: #0a0a0a;
+  border: 2px solid #00f7ff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 1000px;
+  width: 90%;
+  box-shadow: 0 0 25px #00f7ff55;
+}
+
+#who-we-are h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00ffcc;
+  text-shadow: 0 0 12px #00ffccaa;
+  margin-bottom: 1.5rem;
+}
+
+#who-we-are p {
+  text-align: center;
+  color: #cccccc;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+#who-we-are .team-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#who-we-are .team-section h2 {
+  color: #00f7ff;
+  margin-bottom: 30px;
+}
+
+#who-we-are .founders {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+#who-we-are .founder {
+  text-align: center;
+  color: #fff;
+}
+
+#who-we-are .founder img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #00f7ff;
+  box-shadow: 0 0 15px #00f7ff;
+}
+
+#who-we-are .founder h4 {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #00f7ff;
+}
+
+#who-we-are .founder p {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+#who-we-are footer {
+  margin-top: 50px;
+}
+
+#who-we-are .contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: rgba(0, 255, 255, 0.05);
+  border-top: 2px solid #00f7ff;
+  box-shadow: 0 0 20px #00f7ff55;
+  flex-wrap: wrap;
+}
+
+#who-we-are .contact-links a {
+  color: #00f7ff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,186 @@
+:root {
+  --image-width: 200px;
+  --image-height: 300px;
+  --carousel-gap: 50px;
+  /* === Brand Logo Size Controls === */
+  --brand-logo-height: 80px;
+  --brand-logo-max-width: 120px;
+  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.explore-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.explore-title {
+  font-size: 64px;
+  background: linear-gradient(90deg, #00f0ff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ffff33;
+  margin-bottom: 40px;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.9; text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff; }
+}
+
+/* ===== Image Carousel ===== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  overflow: hidden;
+  height: var(--image-height);
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--carousel-gap);
+  width: calc((var(--image-width) + var(--carousel-gap)) * 12);
+  animation: scrollCarousel 14s linear infinite;
+}
+
+.carousel-track img {
+  width: var(--image-width);
+  height: var(--image-height);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #00ffff55;
+}
+
+@keyframes scrollCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - var(--carousel-gap))); }
+}
+
+/* ===== Brand Section - Cyberpunk Style ===== */
+.brand-title {
+  font-size: 36px; /* Slightly larger font for impact */
+  color: #0ff; /* Neon cyan */
+  font-family: 'Orbitron', monospace; /* Futuristic font */
+  margin-bottom: 40px; /* More spacing for better aesthetics */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #0ff, 0 0 15px #0ff, 0 0 20px #0ff;
+  animation: flicker 2s infinite; /* Cyberpunk flicker animation */
+}
+
+.brands {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* More space for logos */
+}
+
+.brands img {
+  height: var(--brand-logo-height);
+  max-width: var(--brand-logo-max-width);
+  filter: grayscale(100%) brightness(1.5) drop-shadow(0 0 8px #ff0080);
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+  border-radius: 8px; /* Rounded corners for a futuristic look */
+}
+
+.brands img:hover {
+  filter: none;
+  transform: scale(1.15);
+  border-color: #ff0080; /* Neon pink border on hover */
+  box-shadow: 0 0 15px #ff0080, 0 0 30px #ff0080, 0 0 45px #ff0080;
+}
+
+/* ===== Cyberpunk Flicker Animation ===== */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 8px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 2px #0ff, 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+  }
+}
+
+/* === INDIVIDUAL IMAGE SIZE & MOVEMENT CONTROL === */
+/* Add these classes to <img> for per-image control (desktop & mobile) */
+.img-size-xs { width: 60px !important; height: 40px !important; }
+.img-size-sm { width: 120px !important; height: 80px !important; }
+.img-size-md { width: 180px !important; height: 120px !important; }
+.img-size-lg { width: 240px !important; height: 160px !important; }
+.img-size-xl { width: 320px !important; height: 220px !important; }
+
+.img-move-left  { transform: translateX(-30px) !important; }
+.img-move-right { transform: translateX(30px) !important; }
+.img-move-up    { transform: translateY(-30px) !important; }
+.img-move-down  { transform: translateY(30px) !important; }
+
+/* === INDIVIDUAL FEATURE BRAND LOGO SIZE & MOVEMENT CONTROL === */
+/* Add these classes to <img> in .brands for per-logo control */
+.brand-logo-xs { height: 24px !important; max-width: 40px !important; }
+.brand-logo-sm { height: 40px !important; max-width: 60px !important; }
+.brand-logo-md { height: 60px !important; max-width: 90px !important; }
+.brand-logo-lg { height: 80px !important; max-width: 120px !important; }
+.brand-logo-xl { height: 120px !important; max-width: 180px !important; }
+
+.brand-logo-move-left  { transform: translateX(-20px) !important; }
+.brand-logo-move-right { transform: translateX(20px) !important; }
+.brand-logo-move-up    { transform: translateY(-20px) !important; }
+.brand-logo-move-down  { transform: translateY(20px) !important; }
+
+/* Mobile-only brand logo size & movement */
+@media (max-width: 768px) {
+  .brand-logo-xs-mobile { height: 16px !important; max-width: 28px !important; }
+  .brand-logo-sm-mobile { height: 24px !important; max-width: 40px !important; }
+  .brand-logo-md-mobile { height: 32px !important; max-width: 60px !important; }
+  .brand-logo-lg-mobile { height: 40px !important; max-width: 80px !important; }
+  .brand-logo-xl-mobile { height: 60px !important; max-width: 120px !important; }
+
+  .brand-logo-move-left-mobile  { transform: translateX(-10px) !important; }
+  .brand-logo-move-right-mobile { transform: translateX(10px) !important; }
+  .brand-logo-move-up-mobile    { transform: translateY(-10px) !important; }
+  .brand-logo-move-down-mobile  { transform: translateY(10px) !important; }
+}
+
+/* Mobile-only image size & movement */
+@media (max-width: 768px) {
+  .img-size-xs-mobile { width: 40px !important; height: 30px !important; }
+  .img-size-sm-mobile { width: 80px !important; height: 50px !important; }
+  .img-size-md-mobile { width: 120px !important; height: 80px !important; }
+  .img-size-lg-mobile { width: 160px !important; height: 100px !important; }
+  .img-size-xl-mobile { width: 200px !important; height: 120px !important; }
+
+  .img-move-left-mobile  { transform: translateX(-15px) !important; }
+  .img-move-right-mobile { transform: translateX(15px) !important; }
+  .img-move-up-mobile    { transform: translateY(-15px) !important; }
+  .img-move-down-mobile  { transform: translateY(15px) !important; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --image-width: 180px;
+    --image-height: 120px;
+    --carousel-gap: 12px;
+    /* Mobile brand logo sizing */
+    --brand-logo-height: 40px;
+    --brand-logo-max-width: 80px;
+  }
+
+  .explore-title {
+    font-size: 42px;
+  }
+
+  .brand-title {
+    font-size: 24px;
+  }
+}

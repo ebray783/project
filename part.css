@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+  font-family: 'Orbitron', sans-serif;
+  color: #00f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  border: 2px solid #00f0ff;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 25px #00f0ff44;
+  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00f0ff;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  background: #00ff94;
+  color: #000;
+  padding: 5px 15px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+ul li {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #a8ffcb;
+}
+
+.highlight {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff00ff;
+}
+
+.highlight a {
+  color: #00f0ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* === SIZE & MOVEMENT CONTROL FOR CONTAINER AND BOX === */
+
+/* Container size control */
+.container-size-xs { max-width: 200px !important; }
+.container-size-sm { max-width: 350px !important; }
+.container-size-md { max-width: 600px !important; }
+.container-size-lg { max-width: 800px !important; }
+.container-size-xl { max-width: 1000px !important; }
+
+/* Container movement */
+.container-move-left  { transform: translateX(-40px) !important; }
+.container-move-right { transform: translateX(40px) !important; }
+.container-move-up    { transform: translateY(-40px) !important; }
+.container-move-down  { transform: translateY(40px) !important; }
+
+/* Box (inner divs, e.g. .highlight, .title, .subtitle) size control */
+.box-size-xs { width: 100px !important; }
+.box-size-sm { width: 180px !important; }
+.box-size-md { width: 300px !important; }
+.box-size-lg { width: 400px !important; }
+.box-size-xl { width: 600px !important; }
+
+/* Box movement */
+.box-move-left  { transform: translateX(-20px) !important; }
+.box-move-right { transform: translateX(20px) !important; }
+.box-move-up    { transform: translateY(-20px) !important; }
+.box-move-down  { transform: translateY(20px) !important; }
+
+/* Mobile-only variants */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  ul li {
+    font-size: 15px;
+  }
+
+  .highlight {
+    font-size: 14px;
+  }
+
+  .container-size-xs-mobile { max-width: 120px !important; }
+  .container-size-sm-mobile { max-width: 200px !important; }
+  .container-size-md-mobile { max-width: 320px !important; }
+  .container-size-lg-mobile { max-width: 400px !important; }
+  .container-size-xl-mobile { max-width: 600px !important; }
+
+  .container-move-left-mobile  { transform: translateX(-20px) !important; }
+  .container-move-right-mobile { transform: translateX(20px) !important; }
+  .container-move-up-mobile    { transform: translateY(-20px) !important; }
+  .container-move-down-mobile  { transform: translateY(20px) !important; }
+
+  .box-size-xs-mobile { width: 60px !important; }
+  .box-size-sm-mobile { width: 100px !important; }
+  .box-size-md-mobile { width: 180px !important; }
+  .box-size-lg-mobile { width: 250px !important; }
+  .box-size-xl-mobile { width: 320px !important; }
+
+  .box-move-left-mobile  { transform: translateX(-10px) !important; }
+  .box-move-right-mobile { transform: translateX(10px) !important; }
+  .box-move-up-mobile    { transform: translateY(-10px) !important; }
+  .box-move-down-mobile  { transform: translateY(10px) !important; }
+}
