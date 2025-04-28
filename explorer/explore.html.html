@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyberpunk Explore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --image-width: 200px;
+      --image-height: 300px;
+      --carousel-gap: 50px;
+
+      /* === Brand Logo Size Controls === */
+      --brand-logo-height: 80px;
+      --brand-logo-max-width: 120px;
+ background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+       background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .explore-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .explore-title {
+      font-size: 64px;
+      background: linear-gradient(90deg, #00f0ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #00ffff33;
+      margin-bottom: 40px;
+      animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.9; text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff; }
+    }
+
+    /* ===== Image Carousel ===== */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      overflow: hidden;
+      height: var(--image-height);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: var(--carousel-gap);
+      width: calc((var(--image-width) + var(--carousel-gap)) * 12);
+      animation: scrollCarousel 14s linear infinite;
+    }
+
+    .carousel-track img {
+      width: var(--image-width);
+      height: var(--image-height);
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 0 25px #00ffff55;
+    }
+
+    @keyframes scrollCarousel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50% - var(--carousel-gap))); }
+    }
+
+    /* ===== Brand Section ===== */
+    .brand-title {
+      font-size: 32px;
+      color:  background: radial-gradient(circle at center, #000018, #0f0c29, #001f3f, #302b63, #24243e);
+      font-family: 'Share Tech Mono', monospace;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .brands {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .brands img {
+      height: var(--brand-logo-height);
+      max-width: var(--brand-logo-max-width);
+      filter: grayscale(100%) brightness(1.5);
+      transition: all 0.3s ease;
+    }
+
+    .brands img:hover {
+      filter: none;
+      transform: scale(1.12);
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --image-width: 180px;
+        --image-height: 120px;
+        --carousel-gap: 12px;
+
+        /* Mobile brand logo sizing */
+        --brand-logo-height: 40px;
+        --brand-logo-max-width: 80px;
+      }
+
+      .explore-title {
+        font-size: 42px;
+      }
+
+      .brand-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="explore-section">
+    <h1 class="explore-title">EXPLORE</h1>
+
+    <!-- Carousel: Autoscrolling Drone Images -->
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <img src="drone1.png" alt="Drone 1">
+        <img src="drone2.png" alt="Drone 2">
+        <img src="drone3.png" alt="Drone 3">
+        <img src="drone4.png" alt="Drone 4">
+        <img src="drone5.png" alt="Drone 5">
+        <img src="drone6.png" alt="Drone 6">
+        <img src="drone7.png" alt="Drone 7">
+        <img src="drone8.png" alt="Drone 8">
+        <img src="drone9.png" alt="Drone 9">
+        <img src="drone10.png" alt="Drone 10">
+
+        <!-- Repeat to enable loop -->
+        <img src="drone1.png" alt="Drone 1 duplicate">
+        <img src="drone2.png" alt="Drone 2 duplicate">
+        <img src="drone3.png" alt="Drone 3 duplicate">
+        <img src="drone4.png" alt="Drone 4 duplicate">
+        <img src="drone5.png" alt="Drone 5 duplicate">
+        <img src="drone6.png" alt="Drone 6 duplicate">
+        <img src="drone7.png" alt="Drone 7 duplicate">
+        <img src="drone8.png" alt="Drone 8 duplicate">
+        <img src="drone9.png" alt="Drone 9 duplicate">
+        <img src="drone10.png" alt="Drone 10 duplicate">
+      </div>
+    </div>
+
+    <!-- Static Brand Logos -->
+    <h2 class="brand-title">FEATURE BRANDS</h2>
+    <div class="brands">
+      <img src="walksnail.jpg" alt="Walksnail">
+      <img src="lumenier.jpg" alt="Lumenier">
+      <img src="iflight.webp" alt="iFlight">
+      <img src="radiomaster.jpg" alt="RadioMaster">
+      <img src="rdq.jpg" alt="Speedybee">
+      <img src="emax.jpg" alt="EMAX">
+      <img src="gnb.jpg" alt="GNB">
+      <img src="dji.jpg" alt="DJI">
+    </div>
+  </section>
+
+</body>
+</html>
