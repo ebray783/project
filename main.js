@@ -45,7 +45,7 @@ const config = {
       ]
     },
    wrapContract: {
-    address: "0x59af51a45acfbe6efafee49c098cbbb8eeb736a4",
+    address: "0x136c931f2e7d254cc4ff1f4ab7f1f12bb59b67fe",
  defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
 
     abi: [
