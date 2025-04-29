@@ -45,76 +45,161 @@ const config = {
       ]
     },
    wrapContract: {
-    address: "0x136c931f2e7d254cc4ff1f4ab7f1f12bb59b67fe",
+    address: "0x692191186c7dc0d712696409627735f947af0262",
  defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
 
     abi: [
   {
+    "constant": true,
     "inputs": [
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getApproved",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "approve",
     "outputs": [],
+    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }],
-    "name": "balanceOf",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "dambi",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
-    "name": "getApproved",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
-      { "internalType": "address", "name": "owner", "type": "address" },
-      { "internalType": "address", "name": "operator", "type": "address" }
+      {
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
-    "name": "isApprovedForAll",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
-    "name": "isTokenWrapped",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
-    "name": "unwrap",
+    "name": "transferFrom",
     "outputs": [],
+    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "string", "name": "tokenURI", "type": "string" }
+      {
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "name": "approved",
+        "type": "bool"
+      }
+    ],
+    "name": "setApprovalForAll",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "name": "tokenURI",
+        "type": "string"
+      }
     ],
     "name": "wrap",
     "outputs": [],
+    "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "dambi",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   }
 ]
+
 
   },
   chainId: 56,
