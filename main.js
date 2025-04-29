@@ -11,7 +11,7 @@ const metadata = {
 const config = {
     mintContract: {
       address: "0x1BEe8d11f11260A4E39627EDfCEB345aAfeb57d9",
-      defaultTokenURI: "ipfs://bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui",
+      defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
       autoApprove: true,
       mintPrice: "0.01",
       abi: [
@@ -47,111 +47,173 @@ const config = {
     },
     wrapContract: {
       address: "0x136c931f2e7d254cc4ff1f4ab7f1f12bb59b67fe",
-      defaultTokenURI: "ipfs://bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui",
-      abi:[
+      defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
+      abi: [
   {
-    "name": "ownerOf",
-    "type": "function",
-    "inputs": [{ "name": "tokenId", "type": "uint256" }],
-    "outputs": [{ "name": "", "type": "address" }],
-    "stateMutability": "view"
-  },
-  {
-    "name": "tokenURI",
-    "type": "function",
-    "inputs": [{ "name": "tokenId", "type": "uint256" }],
-    "outputs": [{ "name": "", "type": "string" }],
-    "stateMutability": "view"
-  },
-  {
-    "name": "safeTransferFrom",
-    "type": "function",
     "inputs": [
-      { "name": "from", "type": "address" },
-      { "name": "to", "type": "address" },
-      { "name": "tokenId", "type": "uint256" }
+      { "internalType": "address", "name": "to", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
     ],
+    "name": "approve",
     "outputs": [],
-    "stateMutability": "nonpayable"
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }],
+    "name": "balanceOf",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "dambi",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
+    "name": "getApproved",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "owner", "type": "address" },
+      { "internalType": "address", "name": "operator", "type": "address" }
+    ],
+    "name": "isApprovedForAll",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
+    "name": "isTokenWrapped",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],
+    "name": "unwrap",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "string", "name": "tokenURI", "type": "string" }
+    ],
+    "name": "wrap",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 ]
+
 
     },
     chainId: 56,
     explorerUrl: "https://bscscan.com"
   };
 
+// --- Setup DOM elements ---
 let statusEl = document.getElementById('nft-status');
 if (!statusEl) {
   statusEl = document.createElement('div');
   statusEl.id = 'nft-status';
   document.body.appendChild(statusEl);
 }
-let walletAddressEl = document.getElementById('wallet-address');
-if (!walletAddressEl) {
-  walletAddressEl = document.createElement('div');
-  walletAddressEl.id = 'wallet-address';
-  document.body.appendChild(walletAddressEl);
-}
 
 // --- Utility Functions ---
-function updateStatus(msg, status = "info") {
-  if (statusEl) statusEl.textContent = msg;
+function updateStatus(message, type = 'info') {
+  if (statusEl) {
+    statusEl.textContent = message;
+    statusEl.className = `cyberpunk-status ${type}`;
+  }
 }
+
 function createExplorerLink(txHash) {
   return `${config.explorerUrl}/tx/${txHash}`;
 }
+
 function handleError(err) {
-  console.error(err);
-  updateStatus("❌ " + (err.message || "Something went wrong"), "error");
+  console.error("Error:", err);
+  updateStatus(`❌ ${err.message || "Something went wrong"}`, "error");
 }
 
-// --- Mint NFT Logic using MetaMask and Ethers.js ---
-// --- Mint NFT Logic using MetaMask and Ethers.js ---
-async function mintNFT(nftIndex) {
-    try {
-      updateStatus("⏳ Minting...");
-      if (!window.ethereum) {
-        updateStatus("MetaMask not found!");
-        return;
-      }
+// --- Mint NFT ---
+window.mintNFT = async function mintNFT(nftIndex) {
+  try {
+    updateStatus("⏳ Minting...");
 
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const account = accounts[0];
-      if (!account) {
-        updateStatus("Connect your wallet first!");
-        return;
-      }
-
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const mintContract = new ethers.Contract(config.mintContract.address, config.mintContract.abi, signer);
-
-      // 💥 FIX here: use ethers.parseUnits (no utils!)
-      const mintPrice = ethers.parseUnits("0.01", 'ether'); 
-
-      const tx = await mintContract.mintNFT({ value: mintPrice });
-      const receipt = await tx.wait();
-      updateStatus(`✅ Minted! TX: ${createExplorerLink(receipt.hash)}`, "success");
-
-      const event = receipt.logs.map(log => {
-        try {
-          return mintContract.interface.parseLog(log);
-        } catch {
-          return null;
-        }
-      }).find(e => e?.name === "Transfer" || e?.name === "NFTTransfer");
-      const tokenId = event?.args?.tokenId || event?.args?.[2];
-      if (!tokenId) throw new Error("Mint event not found");
-
-      const wrapContract = new ethers.Contract(config.wrapContract.address, config.wrapContract.abi, signer);
-      updateStatus("⏳ Wrapping NFT...");
-      await wrapContract.wrap(tokenId, config.wrapContract.defaultTokenURI);
-      updateStatus("✅ Wrapped NFT!", "success");
-    } catch (err) {
-      handleError(err);
+    if (!window.ethereum) {
+      updateStatus("❌ MetaMask not found!");
+      return;
     }
+
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts[0];
+    if (!account) {
+      updateStatus("❌ Connect your wallet first!");
+      return;
+    }
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const mintContract = new ethers.Contract(config.mintContract.address, config.mintContract.abi, signer);
+
+    const mintPrice = ethers.parseUnits(config.mintContract.mintPrice, 'ether');
+
+    const tx = await mintContract.mintNFT({ value: mintPrice });
+    const receipt = await tx.wait();
+    updateStatus(`✅ Minted! TX: ${createExplorerLink(receipt.hash)}`, "success");
+
+    const event = receipt.logs.map(log => {
+      try {
+        return mintContract.interface.parseLog(log);
+      } catch {
+        return null;
+      }
+    }).find(e => e?.name === "Transfer" || e?.name === "NFTTransfer");
+
+    const tokenId = event?.args?.tokenId || event?.args?.[2];
+    if (!tokenId) throw new Error("Token ID not found in events");
+
+    await wrapNFT(tokenId, signer);
+  } catch (err) {
+    handleError(err);
+  }
+};
+
+// --- Wrap NFT ---
+async function wrapNFT(tokenId, signer) {
+  try {
+    const wrapContract = new ethers.Contract(config.wrapContract.address, config.wrapContract.abi, signer);
+    const tokenURI = `https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/${tokenId}.json`;
+    await wrapContract.wrap(tokenId, tokenURI);
+    updateStatus("✅ Wrapped NFT!", "success");
+  } catch (err) {
+    handleError(err);
+  }
 }
 
-// Expose mintNFT globally for HTML buttons
-window.mintNFT = mintNFT;
+// --- Mint Button Setup ---
+const mainMintBtn = document.getElementById("mainMintBtn");
+const nftSelect = document.getElementById("nftSelect");
+
+if (mainMintBtn && nftSelect) {
+  mainMintBtn.disabled = false;
+  mainMintBtn.onclick = () => {
+    const nftIndex = nftSelect.value;
+    mintNFT(nftIndex);
+  };
+} else {
+  console.warn("Mint button or NFT selector not found in DOM.");
+}
+
