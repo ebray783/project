@@ -46,20 +46,36 @@ const config = {
       
     },
     wrapContract: {
-      address: "0xa069fd4ed3be5262166a5392ee31467951822206",
+      address: "0x136c931f2e7d254cc4ff1f4ab7f1f12bb59b67fe",
       defaultTokenURI: "ipfs://bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui",
-      abi: [
-        {
-          "inputs": [
-            { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-            { "internalType": "string", "name": "tokenURI", "type": "string" }
-          ],
-          "name": "wrap",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        }
-      ]
+      abi:[
+  {
+    "name": "ownerOf",
+    "type": "function",
+    "inputs": [{ "name": "tokenId", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "name": "tokenURI",
+    "type": "function",
+    "inputs": [{ "name": "tokenId", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "string" }],
+    "stateMutability": "view"
+  },
+  {
+    "name": "safeTransferFrom",
+    "type": "function",
+    "inputs": [
+      { "name": "from", "type": "address" },
+      { "name": "to", "type": "address" },
+      { "name": "tokenId", "type": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]
+
     },
     chainId: 56,
     explorerUrl: "https://bscscan.com"
