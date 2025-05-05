@@ -10,7 +10,7 @@ const metadata = {
 
 const config = {
   mintContract: {
-    address: "0x2c070779660b2370b8c469d31A58ebdd983231a2",
+    address: "0x648Da88CDf8A2936933e1B5d72526Fd4aF3e129E",
     defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
     autoApprove: true,
     mintPrice: "0.01",
@@ -88,7 +88,7 @@ const config = {
   },
   
   wrapContract: {
-    address: "0x59af51a45acfbe6efafee49c098cbbb8eeb736a4",
+    address: "0xbdd279ae0f42d7c0151ced69cf519a3b9c6557c1",
  defaultTokenURI: "https://ipfs.io/ipfs/bafybeig6wisourp6cvqqczwyfa6nyz7jwbsbbgbilz3d3m2maenxnzvxui/1.json",
 
     abi: [
